@@ -1,0 +1,65 @@
+<form [formGroup]="userForm" novalidate>
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>User Registration</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+
+            <mat-error *ngIf="userForm.controls['name'].hasError">
+              Invalid <strong>name</strong>.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+
+            <mat-error *ngIf="userForm.controls['username'].hasError">
+              Invalid <strong>username</strong>.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+
+            <mat-error *ngIf="userForm.controls['password'].hasError">
+              Invalid <strong>password</strong>.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-label>Level</mat-label>
+
+          <mat-radio-group formControlName="level">
+            <mat-radio-button value="Reporter">Reporter</mat-radio-button>
+            <mat-radio-button value="Developer">Developer</mat-radio-button>
+            <mat-radio-button value="Admin">Admin</mat-radio-button>
+            <mat-radio-button value="SuperAdmin">Super Admin</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
