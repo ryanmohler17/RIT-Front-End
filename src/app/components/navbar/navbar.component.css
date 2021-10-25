@@ -1,0 +1,30 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px .5em;
+    border-bottom: 2px solid black;
+}
+
+nav div {
+    display: flex;
+}
+
+nav button {
+    margin: 0 .5em;
+    border: 1px solid black;
+    border-radius: 10px;
+    min-width: 5em;
+}
+
+nav button:hover {
+    background-color: #979797;
+}
+
+.logo-button {
+    display: flex;
+    align-items: center;
+}
+
+.logo-button > span {
+    margin: 0 5px;
+}

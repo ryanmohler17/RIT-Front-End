@@ -1,0 +1,18 @@
+<nav>
+    <div>
+        <button class="logo-button"><img src="/assets/img/RITS2noborder.png" width="46"
+                height="46" /><span>RITS</span></button>
+        <button>Home</button>
+        <div *ngIf="account">
+            <button>My Issues</button>
+            <button>New Issue</button>
+        </div>
+    </div>
+    <div *ngIf="!account">
+        <button>Login</button>
+    </div>
+    <div *ngIf="account">
+        <button>Logout</button>
+        <button>{{account.name}}</button>
+    </div>
+</nav>
