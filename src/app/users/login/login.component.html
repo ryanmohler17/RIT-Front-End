@@ -11,9 +11,11 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="username" formControlName="username">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+
             <mat-error *ngIf="addressForm.controls['username'].hasError('required')">
-              username is <strong>required</strong>
+              Username is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -22,9 +24,11 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input type="password" matInput placeholder="password" formControlName="password">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+
             <mat-error *ngIf="addressForm.controls['password'].hasError('required')">
-              password is <strong>required</strong>
+              Password is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>

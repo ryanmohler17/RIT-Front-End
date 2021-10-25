@@ -3,30 +3,22 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { Issue } from '../issue';
-
-
-
-//Replace with real data
-const EXAMPLE_DATA: Issue[] = [
-  {id: 1, title: 'Title1', description: 'Description1', issueCategory: 'IssueCategory1', creator: 'Creator1', createdAt: 'CreatedAt1', issueSeverity: 'IssueSeverity1'},
-  {id: 2, title: 'Title2', description: 'Description2', issueCategory: 'IssueCategory2', creator: 'Creator2', createdAt: 'CreatedAt2', issueSeverity: 'IssueSeverity2'},
-  {id: 1, title: 'Title3', description: 'Description3', issueCategory: 'IssueCategory3', creator: 'Creator3', createdAt: 'CreatedAt3', issueSeverity: 'IssueSeverity3'}
-  
-];
+import { Issue } from '../../../domain/issue/issue';
 
 /**
  * Data source for the Issues view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class IssuesDataSource extends DataSource<Issue> {
-  data: Issue[] = EXAMPLE_DATA;
+export class ListIssuesDatasource extends DataSource<Issue> {
+
+  data: Issue[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor() {
+  constructor(issues: Issue[] = []) {
     super();
+    this.data = issues;
   }
 
   /**
@@ -80,7 +72,7 @@ export class IssuesDataSource extends DataSource<Issue> {
       switch (this.sort?.active) {
         case 'title': return compare(a.title, b.title, isAsc);
         //replace by issueCAtegory and creator
-        case 'id': return compare(+a.id, +b.id, isAsc);
+        case 'id': return compare(a.id ? a.id : 0, b.id ? b.id : 0, isAsc);
         default: return 0;
       }
     });

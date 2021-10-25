@@ -11,59 +11,68 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './users/login/login.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
-import { IssuesComponent } from './issues/issues.component';
+import { IssuesComponent } from './issues/list-issues/list-issues.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { RegistrationComponent } from './registration/registration.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { ReportComponent } from './report/report.component';
 import { UserService } from 'src/domain/user/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {IssueService} from "../domain/issue/issue.service";
+import { ListUsersComponent } from './users/list-users/list-users.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import {FollowUpService} from "../domain/follow-up/follow-up.service";
+import {MatStepperModule} from "@angular/material/stepper";
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     LoginComponent,
-    HomeComponent,
     IssuesComponent,
-    RegistrationComponent,
-    ReportComponent
+    EditUserComponent,
+    ReportComponent,
+    ListUsersComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    LayoutModule,
-    HttpClientModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatInputModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatGridListModule,
-    MatMenuModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatSnackBarModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        HttpClientModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        MatInputModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatGridListModule,
+        MatMenuModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatSnackBarModule,
+        MatStepperModule
+    ],
+  providers: [
+    UserService,
+    IssueService,
+    FollowUpService
   ],
-  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
