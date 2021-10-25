@@ -33,6 +33,11 @@ import { ListUsersComponent } from './users/list-users/list-users.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import {FollowUpService} from "../domain/follow-up/follow-up.service";
 import {MatStepperModule} from "@angular/material/stepper";
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from "@angular/material/card";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -43,6 +48,8 @@ import {MatStepperModule} from "@angular/material/stepper";
     EditUserComponent,
     ReportComponent,
     ListUsersComponent
+    NavbarComponent,
+    HomeComponent
   ],
     imports: [
         BrowserModule,
@@ -67,6 +74,11 @@ import {MatStepperModule} from "@angular/material/stepper";
         MatSortModule,
         MatSnackBarModule,
         MatStepperModule
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatListModule
     ],
   providers: [
     UserService,

@@ -6,6 +6,7 @@ import { IssuesComponent } from './issues/list-issues/list-issues.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { ReportComponent } from './report/report.component';
 import {ListUsersComponent} from "./users/list-users/list-users.component";
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [{
     path: 'main',
@@ -13,12 +14,13 @@ const routes: Routes = [{
     children: [
       { path: 'issues', component: IssuesComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'users', component: ListUsersComponent },
       { path: 'users/:userId', component: EditUserComponent },
+      { path: 'users', component: ListUsersComponent },
       { path: 'report/:issueId', component: ReportComponent }
     ],
   },
   { path: '', redirectTo: 'main/issues', pathMatch: 'prefix' },
+  { path: '', component: HomeComponent }
 ];
 
 @NgModule({
