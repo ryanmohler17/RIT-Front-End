@@ -1,0 +1,132 @@
+<form [formGroup]="reportForm" novalidate>
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Report Issue</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title">
+
+            <mat-error *ngIf="reportForm.controls['title'].hasError">
+              Title is <strong>required</strong>.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Category</mat-label>
+
+            <mat-select formControlName="category">
+              <mat-option value="Technical">Technical</mat-option>
+              <mat-option value="Stability">Stability</mat-option>
+              <mat-option value="Usability">Usability</mat-option>
+              <mat-option value="Performance">Performance</mat-option>
+              <mat-option value="Security">Security</mat-option>
+              <mat-option value="Other">Other</mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="reportForm.controls['category'].hasError">
+              Category is <strong>required</strong>.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Assigned To</mat-label>
+
+            <mat-select formControlName="assignedTo">
+              <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="reportForm.controls['assignedTo'].hasError">
+              User to assign is <strong>required</strong>.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-card>
+        <h3><b>Severity</b></h3>
+
+        <mat-radio-group formControlName="severity">
+          <mat-radio-button value="Low">Low</mat-radio-button>
+          <mat-radio-button value="Medium">Medium</mat-radio-button>
+          <mat-radio-button value="High">High</mat-radio-button>
+          <mat-radio-button value="Critical">Critical</mat-radio-button>
+        </mat-radio-group>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Follow Up</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="row" style="margin-top: 20px;">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+
+            <mat-error *ngIf="reportForm.controls['description'].hasError">
+              Description is <strong>required</strong>.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 20px;">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Status</mat-label>
+
+            <mat-select formControlName="status">
+              <mat-option value="Open">Open</mat-option>
+              <mat-option value="InProgress">In Progress</mat-option>
+              <mat-option value="Closed">Closed</mat-option>
+              <mat-option value="Resolved">Resolved</mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="reportForm.controls['status'].hasError">
+              Status is <strong>required</strong>.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+      <button mat-raised-button *ngIf="issue.id != 0" (click)="onCancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Follow Up History</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-stepper linear="true" orientation="vertical">
+        <mat-step *ngFor="let followUp of followUps">
+          <ng-template matStepLabel>{{followUp.status}}</ng-template>
+          <ng-template matStepContent>
+            <p>{{followUp.description}}</p>
+          </ng-template>
+        </mat-step>
+      </mat-stepper>
+    </mat-card-content>
+  </mat-card>
+</form>

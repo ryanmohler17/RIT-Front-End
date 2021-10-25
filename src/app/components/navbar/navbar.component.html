@@ -1,18 +1,18 @@
-<nav>
+<nav class="main-primary">
     <div>
-        <button class="logo-button"><img src="/assets/img/RITS2noborder.png" width="46"
+        <button class="logo-button main-secondary"><img src="/assets/img/RITS2noborder.png" width="46"
                 height="46" /><span>RITS</span></button>
-        <button>Home</button>
+        <button class="main-secondary" routerLink="/">Home</button>
         <div *ngIf="account">
-            <button>My Issues</button>
-            <button>New Issue</button>
+            <button class="main-secondary" routerLink="/browse">My Issues</button>
+            <button class="main-secondary" routerLink="/report/-1">New Issue</button>
         </div>
     </div>
     <div *ngIf="!account">
-        <button>Login</button>
+        <button class="main-secondary" routerLink="/login">Login</button>
     </div>
     <div *ngIf="account">
-        <button>Logout</button>
-        <button>{{account.name}}</button>
+        <button class="main-secondary">Logout</button>
+        <button class="main-secondary">{{account.name}}</button>
     </div>
 </nav>

@@ -3,16 +3,16 @@
 <mat-card>
   <div *ngIf="!account">
     <mat-list>
-      <mat-list-item routerLink="/">Browse Issues</mat-list-item>
-      <mat-list-item routerLink="/">Login</mat-list-item>
-      <mat-list-item routerLink="/">Signup</mat-list-item>
+      <mat-list-item routerLink="/browse">Browse Issues</mat-list-item>
+      <mat-list-item routerLink="/login">Login</mat-list-item>
+      <mat-list-item routerLink="/login">Signup</mat-list-item>
     </mat-list>
   </div>
   <div *ngIf="account">
     <mat-list>
-      <mat-list-item routerLink="/">View My issues</mat-list-item>
-      <mat-list-item routerLink="/">Create New Issue</mat-list-item>
-      <mat-list-item routerLink="/">Browse Issues</mat-list-item>
+      <mat-list-item routerLink="/browse">View My issues</mat-list-item>
+      <mat-list-item routerLink="/report/-1">Create New Issue</mat-list-item>
+      <mat-list-item routerLink="/browse">Browse Issues</mat-list-item>
     </mat-list>
   </div>
 </mat-card>
