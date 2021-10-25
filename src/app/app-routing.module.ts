@@ -6,11 +6,13 @@ import { EditUserComponent } from './components/users/edit-user/edit-user.compon
 import { ReportComponent } from './components/report/report.component';
 import {ListUsersComponent} from "./components/users/list-users/list-users.component";
 import { HomeComponent } from './components/home/home.component';
+import { BoardComponent } from './components/board/board/board.component';
 
 const routes: Routes = [
   { path: 'browse', component: IssuesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'users/:userId', component: EditUserComponent },
+  { path: 'board/:boardId', component: BoardComponent},
   { path: 'users', component: ListUsersComponent },
   { path: 'report/:issueId', component: ReportComponent },
   { path: '', component: HomeComponent }
