@@ -3,22 +3,22 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import {User} from "../../../domain/user/user";
+import { Issue } from '../../../../domain/issue/issue';
 
 /**
- * Data source for the ListUsers view. This class should
+ * Data source for the Issues view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class ListUsersDataSource extends DataSource<User> {
+export class ListIssuesDatasource extends DataSource<Issue> {
 
-  data: User[] = [];
+  data: Issue[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor(users: User[] = []) {
+  constructor(issues: Issue[] = []) {
     super();
-    this.data = users;
+    this.data = issues;
   }
 
   /**
@@ -26,7 +26,7 @@ export class ListUsersDataSource extends DataSource<User> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<User[]> {
+  connect(): Observable<Issue[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -49,7 +49,7 @@ export class ListUsersDataSource extends DataSource<User> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: User[]): User[] {
+  private getPagedData(data: Issue[]): Issue[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -62,7 +62,7 @@ export class ListUsersDataSource extends DataSource<User> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: User[]): User[] {
+  private getSortedData(data: Issue[]): Issue[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -70,7 +70,8 @@ export class ListUsersDataSource extends DataSource<User> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
+        case 'title': return compare(a.title, b.title, isAsc);
+        //replace by issueCAtegory and creator
         case 'id': return compare(a.id ? a.id : 0, b.id ? b.id : 0, isAsc);
         default: return 0;
       }

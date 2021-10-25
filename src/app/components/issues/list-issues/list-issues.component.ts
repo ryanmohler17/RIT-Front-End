@@ -2,12 +2,12 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { Issue } from '../../../domain/issue/issue';
+import { Issue } from '../../../../domain/issue/issue';
 import { ListIssuesDatasource } from './list-issues-datasource';
-import {IssueService} from "../../../domain/issue/issue.service";
+import {IssueService} from "../../../../domain/issue/issue.service";
 import {Router} from "@angular/router";
-import {User} from "../../../domain/user/user";
-import {UserService} from "../../../domain/user/user.service";
+import {User} from "../../../../domain/user/user";
+import {UserService} from "../../../../domain/user/user.service";
 
 @Component({
   selector: 'app-list-issues',

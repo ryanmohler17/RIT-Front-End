@@ -3,8 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ListUsersDataSource } from './list-users-datasource';
-import {User} from "../../../domain/user/user";
-import {UserService} from "../../../domain/user/user.service";
+import {User} from "../../../../domain/user/user";
+import {UserService} from "../../../../domain/user/user.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -57,7 +57,7 @@ export class ListUsersComponent implements OnInit, AfterViewInit {
   }
 
   editUser(userId: number) {
-    this.router.navigate([`/main/users/${userId}`]);
+    this.router.navigate([`/users/${userId}`]);
   }
 
   deleteUser(userId: number) {

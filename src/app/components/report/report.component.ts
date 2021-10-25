@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {User} from "../../domain/user/user";
+import {User} from "../../../domain/user/user";
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Issue} from 'src/domain/issue/issue';
 import {IssueService} from 'src/domain/issue/issue.service';
-import {UserService} from "../../domain/user/user.service";
-import {FollowUp} from "../../domain/follow-up/follow-up";
-import {FollowUpService} from "../../domain/follow-up/follow-up.service";
+import {UserService} from "../../../domain/user/user.service";
+import {FollowUp} from "../../../domain/follow-up/follow-up";
+import {FollowUpService} from "../../../domain/follow-up/follow-up.service";
 
 @Component({
   selector: 'app-report',

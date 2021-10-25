@@ -2,7 +2,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {UserService} from "../../../domain/user/user.service";
+import {UserService} from "../../../../domain/user/user.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 
