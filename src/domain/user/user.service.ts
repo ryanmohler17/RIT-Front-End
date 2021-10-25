@@ -9,7 +9,7 @@ export class UserService {
 
   private emptyUser: User = {
     id: 0,
-    name: '',
+    name: 'user',
     username: '',
     password: '',
     email: '',
