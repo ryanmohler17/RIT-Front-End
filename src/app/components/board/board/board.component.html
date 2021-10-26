@@ -2,6 +2,17 @@
     <h1>{{board.name}}</h1>
     <p>{{board.description}}</p>
     <div style="display: flex; " cdkDropListGroup>
-        <app-list style="width: 20%; margin: 0 1em" *ngFor="let list of board.lists" [list]="list" [items]="issues" (addItemEvent)="itemAdded($event)" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="list"></app-list>
+        <app-list style="width: 20%; margin: 0 1em" *ngFor="let list of board.lists" [list]="list" [items]="issues"
+            (addItemEvent)="itemAdded($event)" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="list">
+        </app-list>
+        <div style="background-color: #909090; border-radius: 1em; height: 100%;">
+            <div style="margin: 0 .5em;">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>New list name</mat-label>
+                    <input matInput type="text" [(ngModel)]="newList">
+                </mat-form-field>
+                <button primary mat-button (click)="addList()">Add List</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -16,6 +16,7 @@ import { ListComponent } from '../list/list.component';
 export class BoardComponent implements OnInit {
   board: Board | null = null;
   issues: Issue[] = [];
+  newList: string = '';
 
   constructor(private boardService: BoardService, private activatedRoute: ActivatedRoute, private issueService: IssueService) { }
 
@@ -24,7 +25,7 @@ export class BoardComponent implements OnInit {
       return issue.id !== event
     });
     if (this.board !== null) {
-      this.boardService.save(this.board);
+      this.boardService.save(this.board).subscribe();
     }
   }
 
@@ -56,7 +57,20 @@ export class BoardComponent implements OnInit {
   drop(event: CdkDragDrop<BoardList>) {
     transferArrayItem(event.previousContainer.data.issues, event.container.data.issues, event.previousIndex, event.currentIndex);
     if (this.board !== null) {
-      this.boardService.save(this.board);
+      this.boardService.save(this.board).subscribe();
+    }
+  }
+
+  addList() {
+    console.log('click');
+    this.board?.lists.push({
+      id: -1,
+      title: this.newList,
+      issues: []
+    });
+    this.newList = '';
+    if (this.board !== null) {
+      this.boardService.save(this.board).subscribe();
     }
   }
 
