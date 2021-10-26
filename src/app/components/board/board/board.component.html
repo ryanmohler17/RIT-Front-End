@@ -1,12 +1,12 @@
-<div *ngIf="board">
+<div *ngIf="board" style="height: 100%;">
     <h1>{{board.name}}</h1>
     <p>{{board.description}}</p>
-    <div style="display: flex; " cdkDropListGroup>
-        <app-list style="width: 20%; margin: 0 1em" *ngFor="let list of board.lists" [list]="list" [items]="issues"
+    <div style="display: flex; height: 100%;" cdkDropListGroup>
+        <app-list style="width: 20%; margin: 0 1em; background-color: #909090; border-radius: 1em; height: 100%;" *ngFor="let list of board.lists" [list]="list" [items]="issues"
             (addItemEvent)="itemAdded($event)" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="list">
         </app-list>
         <div style="background-color: #909090; border-radius: 1em; height: 100%;">
-            <div style="margin: 0 .5em;">
+            <div style="margin: 0 .5em; height: 100%;">
                 <mat-form-field appearance="fill" style="width: 100%;">
                     <mat-label>New list name</mat-label>
                     <input matInput type="text" [(ngModel)]="newList">
