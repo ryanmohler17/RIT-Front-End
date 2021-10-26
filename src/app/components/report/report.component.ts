@@ -32,6 +32,7 @@ export class ReportComponent implements OnInit {
 
   issue: Issue = {
     title: '',
+    description: '',
     category: 'Other',
     severity: 'Low'
   };
@@ -75,6 +76,7 @@ export class ReportComponent implements OnInit {
       } else {
         this.issue = {
           title: '',
+          description: '',
           category: 'Other',
           severity: 'Low'
         };
