@@ -1,7 +1,7 @@
 <div *ngIf="board">
     <h1>{{board.name}}</h1>
     <p>{{board.description}}</p>
-    <div style="display: flex; ">
-        <app-list style="width: 20%; margin: 0 1em" *ngFor="let list of board.lists" [list]="list" [items]="issues" (addItemEvent)="itemAdded($event)"></app-list>
+    <div style="display: flex; " cdkDropListGroup>
+        <app-list style="width: 20%; margin: 0 1em" *ngFor="let list of board.lists" [list]="list" [items]="issues" (addItemEvent)="itemAdded($event)" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="list"></app-list>
     </div>
 </div>

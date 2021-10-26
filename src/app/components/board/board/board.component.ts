@@ -1,3 +1,4 @@
+import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Board } from 'src/app/interfaces/board';
@@ -5,6 +6,7 @@ import { BoardList } from 'src/app/interfaces/board-list';
 import { BoardService } from 'src/app/service/board.service';
 import { Issue } from 'src/domain/issue/issue';
 import { IssueService } from 'src/domain/issue/issue.service';
+import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-board',
@@ -46,6 +48,11 @@ export class BoardComponent implements OnInit {
         })
       })
     })
+  }
+
+  drop(event: CdkDragDrop<BoardList>) {
+    transferArrayItem(event.previousContainer.data.issues, event.container.data.issues, event.previousIndex, event.currentIndex);
+    console.log(event);
   }
 
 }

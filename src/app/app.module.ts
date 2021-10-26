@@ -40,6 +40,7 @@ import { ListComponent } from './components/board/list/list.component';
 import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FormsModule } from '@angular/forms';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { FormsModule } from '@angular/forms';
     MatStepperModule,
     MatButtonModule,
     MatAutocompleteModule,
-    FormsModule
+    FormsModule,
+    DragDropModule
   ],
   providers: [
     UserService,

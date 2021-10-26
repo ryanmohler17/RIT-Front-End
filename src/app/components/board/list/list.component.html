@@ -14,7 +14,7 @@
                 </button>
         </mat-menu>
     </div>
-    <mat-card *ngFor="let issue of list.issues" style="margin: .5em;">
+    <mat-card *ngFor="let issue of list.issues" style="margin: .5em;" cdkDrag>
         <mat-card-title>{{issue.title}}</mat-card-title>
         <mat-card-content>{{ (issue.description.length>200)? (issue.description | slice:0:200)+'..':(issue.description)
             }}</mat-card-content>
