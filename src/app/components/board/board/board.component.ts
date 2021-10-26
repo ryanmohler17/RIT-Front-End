@@ -23,6 +23,9 @@ export class BoardComponent implements OnInit {
     this.issues = this.issues.filter(issue => {
       return issue.id !== event
     });
+    if (this.board !== null) {
+      this.boardService.save(this.board);
+    }
   }
 
   ngOnInit(): void {
@@ -52,7 +55,9 @@ export class BoardComponent implements OnInit {
 
   drop(event: CdkDragDrop<BoardList>) {
     transferArrayItem(event.previousContainer.data.issues, event.container.data.issues, event.previousIndex, event.currentIndex);
-    console.log(event);
+    if (this.board !== null) {
+      this.boardService.save(this.board);
+    }
   }
 
 }
