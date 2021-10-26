@@ -1,18 +1,57 @@
 <h1 *ngIf="account">Hello {{account.name}}</h1>
 <h1 *ngIf="!account">Welcome!</h1>
+
 <mat-card>
   <div *ngIf="!account">
-    <mat-list>
-      <mat-list-item routerLink="/browse">Browse Issues</mat-list-item>
-      <mat-list-item routerLink="/login">Login</mat-list-item>
-      <mat-list-item routerLink="/login">Signup</mat-list-item>
-    </mat-list>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/browse">
+        <mat-icon>web</mat-icon>&nbsp;Browse Issues
+      </a>
+      <a mat-list-item routerLink="/login">
+        <mat-icon>login</mat-icon>&nbsp;Login
+      </a>
+
+      <a mat-list-item routerLink="/Signup">
+        <mat-icon>app_registration</mat-icon>&nbsp;SignUp
+      </a>
+
+
+    </mat-nav-list>
   </div>
+
   <div *ngIf="account">
-    <mat-list>
-      <mat-list-item routerLink="/browse">View My issues</mat-list-item>
-      <mat-list-item routerLink="/report/-1">Create New Issue</mat-list-item>
-      <mat-list-item routerLink="/browse">Browse Issues</mat-list-item>
-    </mat-list>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/browse/{{account.id}}">
+        <mat-icon>preview</mat-icon>&nbsp;View My Issues
+      </a>
+
+      <a mat-list-item routerLink="/report/-1">
+        <mat-icon>fiber_new</mat-icon>&nbsp;Create New Issues
+      </a>
+
+      <a mat-list-item routerLink="/browse/0">
+        <mat-icon>view_cozy</mat-icon>&nbsp;Browse Issues
+      </a>
+
+
+    </mat-nav-list>
   </div>
-</mat-card>
+</mat-card><br><br>
+
+
+<!--<mat-card>-->
+<!--  <div *ngIf="!account">-->
+<!--    <mat-list>-->
+<!--      <mat-list-item routerLink="/browse">Browse Issues</mat-list-item>-->
+<!--      <mat-list-item routerLink="/login">Login</mat-list-item>-->
+<!--      <mat-list-item routerLink="/login">Signup</mat-list-item>-->
+<!--    </mat-list>-->
+<!--  </div>-->
+<!--  <div *ngIf="account">-->
+<!--    <mat-list>-->
+<!--      <mat-list-item routerLink="/browse">View My issues</mat-list-item>-->
+<!--      <mat-list-item routerLink="/report/-1">Create New Issue</mat-list-item>-->
+<!--      <mat-list-item routerLink="/browse">Browse Issues</mat-list-item>-->
+<!--    </mat-list>-->
+<!--  </div>-->
+<!--</mat-card>-->

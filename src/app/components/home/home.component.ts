@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../../domain/user/user";
 import {UserService} from "../../../domain/user/user.service";
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

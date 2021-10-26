@@ -1,18 +1,42 @@
-<nav class="main-primary">
-    <div>
-        <button class="logo-button main-secondary"><img src="/assets/img/RITS2noborder.png" width="46"
-                height="46" /><span>RITS</span></button>
-        <button class="main-secondary" routerLink="/">Home</button>
-        <div *ngIf="account">
-            <button class="main-secondary" routerLink="/browse">My Issues</button>
-            <button class="main-secondary" routerLink="/report/-1">New Issue</button>
-        </div>
-    </div>
-    <div *ngIf="!account">
-        <button class="main-secondary" routerLink="/login">Login</button>
-    </div>
-    <div *ngIf="account">
-        <button class="main-secondary">Logout</button>
-        <button class="main-secondary">{{account.name}}</button>
-    </div>
-</nav>
+
+<mat-toolbar color="primary">
+
+  <div>
+    <img style="margin:28px; width:80px; height:80px;" src="assets/img/ritsBars.PNG">
+  </div>
+  <span style="margin:30px">RITS</span>
+
+  <div style="width:30px"></div>
+  <div class="">
+    <button mat-raised-button color="accent" (click)=>Home</button>
+    <button mat-raised-button color="accent" >My Issues</button>
+    <button mat-raised-button color="accent" >New Issue</button>
+  </div>
+  <div style="width:1500px"></div>
+  <div class="">
+    <button mat-raised-button color="primary" href="/">Logout</button>
+    <button mat-raised-button color="primary" href="/">User</button>
+  </div>
+
+</mat-toolbar>
+
+
+
+<!--<nav class="main-primary">-->
+<!--    <div>-->
+<!--        <button class="logo-button main-secondary"><img src="/assets/img/RITS2noborder.png" width="46"-->
+<!--                height="46" /><span>RITS</span></button>-->
+<!--        <button class="main-secondary" routerLink="/">Home</button>-->
+<!--        <div *ngIf="account">-->
+<!--            <button class="main-secondary" routerLink="/browse">My Issues</button>-->
+<!--            <button class="main-secondary" routerLink="/report/-1">New Issue</button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div *ngIf="!account">-->
+<!--        <button class="main-secondary" routerLink="/login">Login</button>-->
+<!--    </div>-->
+<!--    <div *ngIf="account">-->
+<!--        <button class="main-secondary">Logout</button>-->
+<!--        <button class="main-secondary">{{account.name}}</button>-->
+<!--    </div>-->
+<!--</nav>-->

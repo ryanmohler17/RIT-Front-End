@@ -8,7 +8,7 @@ import {ListUsersComponent} from "./components/users/list-users/list-users.compo
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: 'browse', component: IssuesComponent },
+  { path: 'browse/:userId', component: IssuesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'users/:userId', component: EditUserComponent },
   { path: 'users', component: ListUsersComponent },
