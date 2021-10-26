@@ -9,7 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BoardComponent } from './components/board/board/board.component';
 
 const routes: Routes = [
-  { path: 'browse', component: IssuesComponent },
+  { path: 'browse/:userId', component: IssuesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'users/:userId', component: EditUserComponent },
   { path: 'board/:boardId', component: BoardComponent},

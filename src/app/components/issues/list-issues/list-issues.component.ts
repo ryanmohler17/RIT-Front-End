@@ -5,7 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { Issue } from '../../../../domain/issue/issue';
 import { ListIssuesDatasource } from './list-issues-datasource';
 import {IssueService} from "../../../../domain/issue/issue.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../../../../domain/user/user";
 import {UserService} from "../../../../domain/user/user.service";
 
@@ -27,7 +27,11 @@ export class IssuesComponent implements OnInit, AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'title', 'category', 'createdBy', 'assignedTo', 'severity', 'createdAt', 'updatedAt', 'options' ];
 
-  constructor(private router: Router, private issueService: IssueService, private userService: UserService) {
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private issueService: IssueService,
+              private userService: UserService) {
+
     this.dataSource = new ListIssuesDatasource();
   }
 
@@ -40,10 +44,23 @@ export class IssuesComponent implements OnInit, AfterViewInit {
       }
     });
 
-    this.issueService.findAll().subscribe((data) => {
-      this.issues = data;
-      this.updateTableDataSource();
-    })
+    this.activatedRoute.params.subscribe(params => {
+      this.loadIssues(params.userId);
+    });
+  }
+
+  private loadIssues(userId: number) {
+    if (userId == 0) {
+      this.issueService.findAll().subscribe((data) => {
+        this.issues = data;
+        this.updateTableDataSource();
+      });
+    } else {
+      this.issueService.findByUser(userId).subscribe((data) => {
+        this.issues = data;
+        this.updateTableDataSource();
+      });
+    }
   }
 
   ngAfterViewInit(): void {
