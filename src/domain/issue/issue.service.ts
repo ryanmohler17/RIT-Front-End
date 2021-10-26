@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Issue} from './issue';
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable, Subscriber} from "rxjs";
 import {environment} from "../../environments/environment";
 import {IssueFollowUpDTO} from "./issue-follow-up.dto";
 
@@ -12,12 +12,44 @@ export class IssueService {
 
   }
 
+  private issuesTest: Issue[] = [
+    {
+      id: 4,
+      title: 'Test 1',
+      description: 'This is a Test Issue',
+      category: 'test',
+      severity: 'test'
+    },
+    {
+      id: 5,
+      title: 'Test 2',
+      description: 'This is a Test Issue',
+      category: 'test',
+      severity: 'test'
+    },
+    {
+      id: 6,
+      title: 'Test 3',
+      description: 'This is a Test Issue',
+      category: 'test',
+      severity: 'test'
+    }
+  ]
+
+  private issues = new BehaviorSubject<Issue[]>(this.issuesTest);
+
   findAll(): Observable<Issue[]> {
-    return this.http.get<Issue[]>(`${environment.apiURL}/api/issues`);
+    //return this.http.get<Issue[]>(`${environment.apiURL}/api/issues`);
+    return this.issues.asObservable();
   }
 
   findById(issueId: number): Observable<Issue> {
-    return this.http.get<Issue>(`${environment.apiURL}/api/issues/${issueId}`);
+    //return this.http.get<Issue>(`${environment.apiURL}/api/issues/${issueId}`);
+    return new Observable(subscriber => {
+      subscriber.next(this.issuesTest.filter(issue => {
+        return issue.id === issueId
+      })[0])
+    })
   }
 
   save(issueFollowUpDTO: IssueFollowUpDTO): Observable<IssueFollowUpDTO> {

@@ -35,6 +35,12 @@ import {HomeComponent} from './components/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardActions, MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
+import { BoardComponent } from './components/board/board/board.component';
+import { ListComponent } from './components/board/list/list.component';
+import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { FormsModule } from '@angular/forms';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -46,7 +52,10 @@ import {MatListModule} from "@angular/material/list";
     ReportComponent,
     ListUsersComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    BoardComponent,
+    ListComponent,
+    ClickStopPropagationDirective
   ],
   imports: [
     BrowserModule,
@@ -70,7 +79,11 @@ import {MatListModule} from "@angular/material/list";
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    FormsModule,
+    DragDropModule
   ],
   providers: [
     UserService,

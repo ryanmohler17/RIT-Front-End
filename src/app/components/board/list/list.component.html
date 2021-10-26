@@ -1,0 +1,26 @@
+<div>
+    <div style="display: flex; justify-content: space-between; margin: 0 .5em;">
+        <h3>{{list.title}}</h3>
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>add</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <mat-form-field appClickStopPropagation>
+                <mat-label>Search Issue</mat-label>
+                <input [(ngModel)]="searchText" matInput type="text" (keydown)="$event.stopPropagation()"
+                    (ngModelChange)="inputChange()" />
+            </mat-form-field>
+            <button mat-menu-item *ngFor="let issue of itemsFiltered" [value]="issue.id" (click)="addIssue(issue.id)">
+                {{issue.title}}
+            </button>
+        </mat-menu>
+    </div>
+    <div style="overflow-y: scroll; height: 100%;">
+        <mat-card *ngFor="let issue of list.issues" style="margin: .5em;" cdkDrag>
+            <mat-card-title>{{issue.title}}</mat-card-title>
+            <mat-card-content>{{ (issue.description.length>200)? (issue.description |
+                slice:0:200)+'..':(issue.description)
+                }}</mat-card-content>
+        </mat-card>
+    </div>
+</div>
