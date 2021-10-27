@@ -19,7 +19,7 @@ export class UserService {
   private loggedUser = new BehaviorSubject<User>(this.emptyUser);
 
   constructor(private http: HttpClient) {
-
+    
   }
 
   setLoggedUser(user?: User): void {
@@ -31,26 +31,26 @@ export class UserService {
   }
 
   getLoggerUser(): Observable<User> {
-    return this.loggedUser.asObservable();
+    return this.http.get<User>(`${environment.apiURL}/users/current`)
   }
 
   findAll(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.apiURL}/api/users`);
+    return this.http.get<User[]>(`${environment.apiURL}/users`);
   }
 
   findById(userId: number): Observable<User> {
-    return this.http.get<User>(`${environment.apiURL}/api/users/${userId}`);
+    return this.http.get<User>(`${environment.apiURL}/users/${userId}`);
   }
 
   save(user: User): Observable<User> {
-    return this.http.post<User>(`${environment.apiURL}/api/users`, user);
+    return this.http.post<User>(`${environment.apiURL}/users`, user);
   }
 
   delete(userId: number): Observable<void> {
-    return this.http.delete<void>(`${environment.apiURL}/api/users/${userId}`);
+    return this.http.delete<void>(`${environment.apiURL}/users/${userId}`);
   }
 
   login(value: any): Observable<User> {
-    return this.http.post<User>(`${environment.apiURL}/api/users/login`, value);
+    return this.http.post<User>(`${environment.apiURL}/users/login`, value);
   }
 }

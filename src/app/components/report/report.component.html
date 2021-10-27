@@ -122,9 +122,6 @@
       <mat-stepper linear="true" orientation="vertical">
         <mat-step *ngFor="let followUp of followUps">
           <ng-template matStepLabel>{{followUp.status}}</ng-template>
-          <ng-template matStepContent>
-            <p>{{followUp.description}}</p>
-          </ng-template>
         </mat-step>
       </mat-stepper>
     </mat-card-content>

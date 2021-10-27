@@ -56,7 +56,10 @@ export class IssuesComponent implements OnInit, AfterViewInit {
         this.updateTableDataSource();
       });
     } else {
-      this.issueService.findByUser(userId).subscribe((data) => {
+      this.issueService.findAll().subscribe((data) => {
+        data = data.filter(item => {
+          return item.createdBy?.id == userId;
+        })
         this.issues = data;
         this.updateTableDataSource();
       });

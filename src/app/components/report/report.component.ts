@@ -31,6 +31,7 @@ export class ReportComponent implements OnInit {
   });
 
   issue: Issue = {
+    id: -1,
     title: '',
     description: '',
     category: 'Other',
@@ -75,6 +76,7 @@ export class ReportComponent implements OnInit {
         });
       } else {
         this.issue = {
+          id: -1,
           title: '',
           description: '',
           category: 'Other',
@@ -100,7 +102,7 @@ export class ReportComponent implements OnInit {
     this.issue.assignedTo = this.users.find((user) => user.id == this.reportForm.get('assignedTo')?.value);
 
     const followUp: FollowUp = {...this.reportForm.value}
-    followUp.issue = this.issue;
+    followUp.issueId = this.issue.id;
     this.issue.createdBy = this.user;
 
     this.issueService.save({issue: this.issue, followUp: followUp}).subscribe((data) => {

@@ -20,12 +20,14 @@ export class BoardService {
         title: 'To Do',
         issues: [
           {
+            id: 1,
             title: 'Test issue 1',
             description: 'This is a test issue',
             category: 'test',
             severity: 'test'
           },
           {
+            id: 2,
             title: 'Test issue 3',
             description: 'This is a test issue',
             category: 'test',
@@ -38,6 +40,7 @@ export class BoardService {
         title: 'In Progress',
         issues: [
           {
+            id: 3,
             title: 'Test issue 2',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris dignissim at lorem vitae auctor. Donec at lorem et libero tempor posuere. Donec malesuada felis a tempor cursus. Ut interdum velit tortor, vitae vehicula nibh ultricies a. Praesent suscipit sem in justo tristique hendrerit. Donec facilisis, dui in molestie varius, turpis urna posuere mi, non ultricies lacus odio vitae libero. Sed convallis et neque et tincidunt. In mollis lorem sit amet sapien pretium, suscipit vulputate sem ornare. Nulla at nisi eu augue feugiat ullamcorper. Sed sed aliquet massa. In finibus, nisl non bibendum sollicitudin, lorem tellus blandit lacus, ac lacinia odio est quis dui. ',
             category: 'test',
