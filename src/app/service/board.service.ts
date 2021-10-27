@@ -53,7 +53,7 @@ export class BoardService {
 
 
   constructor(private http: HttpClient) {
-    
+
   }
 
   private board = new BehaviorSubject<Board>(this.emptyBoard);
@@ -72,7 +72,7 @@ export class BoardService {
   }
 
   save(board: Board): Observable<Board> {
-    return this.http.post<Board>(`${environment.apiURL}/board/updateBoard/${board.id}`, board);
+    return this.http.patch<Board>(`${environment.apiURL}/board/updateBoard/${board.id}`, board);
   }
 
   delete(boardId: number): Observable<void> {

@@ -17,7 +17,7 @@
   <div style="width:1500px"></div>
   <div class="" *ngIf="account">
     <button mat-raised-button color="primary" routerLink="/">Logout</button>
-    <button mat-raised-button color="primary" routerLink="/">{{account.name}}</button>
+    <button mat-raised-button color="primary" routerLink="/">{{account.username}}</button>
   </div>
   <div *ngIf="!account">
     <button mat-raised-button color="primary" routerLink="/login">Login</button>

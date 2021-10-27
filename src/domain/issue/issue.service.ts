@@ -44,7 +44,7 @@ export class IssueService {
   }
 
   findById(issueId: number): Observable<Issue> {
-    return this.http.get<Issue>(`${environment.apiURL}/issues/${issueId}`);
+    return this.http.get<Issue>(`${environment.apiURL}/issues/getIssueById/${issueId}`);
     /*return new Observable(subscriber => {
       subscriber.next(this.issuesTest.filter(issue => {
         return issue.id === issueId

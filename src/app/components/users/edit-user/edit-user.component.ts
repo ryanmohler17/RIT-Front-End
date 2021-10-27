@@ -22,7 +22,6 @@ export class EditUserComponent implements OnInit {
 
   user: User = {
     id: 0,
-    name: '',
     username: '',
     password: '',
     email: '',
@@ -49,7 +48,6 @@ export class EditUserComponent implements OnInit {
       } else {
         this.user = {
           id: 0,
-          name: '',
           username: '',
           password: '',
           email: '',

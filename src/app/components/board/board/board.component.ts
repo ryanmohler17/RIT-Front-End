@@ -1,12 +1,12 @@
-import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnChanges, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Board } from 'src/app/interfaces/board';
-import { BoardList } from 'src/app/interfaces/board-list';
-import { BoardService } from 'src/app/service/board.service';
-import { Issue } from 'src/domain/issue/issue';
-import { IssueService } from 'src/domain/issue/issue.service';
-import { ListComponent } from '../list/list.component';
+import {CdkDragDrop, transferArrayItem} from '@angular/cdk/drag-drop';
+import {Component, OnChanges, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Board} from 'src/app/interfaces/board';
+import {BoardList} from 'src/app/interfaces/board-list';
+import {BoardService} from 'src/app/service/board.service';
+import {Issue} from 'src/domain/issue/issue';
+import {IssueService} from 'src/domain/issue/issue.service';
+import {ListComponent} from '../list/list.component';
 
 @Component({
   selector: 'app-board',
@@ -18,11 +18,12 @@ export class BoardComponent implements OnInit {
   issues: Issue[] = [];
   newList: string = '';
 
-  constructor(private boardService: BoardService, private activatedRoute: ActivatedRoute, private issueService: IssueService) { }
+  constructor(private boardService: BoardService, private activatedRoute: ActivatedRoute, private issueService: IssueService) {
+  }
 
-  itemAdded(event: number) {
+  itemAdded(event: any) {
     this.issues = this.issues.filter(issue => {
-      return issue.id !== event
+      return issue.id !== event.issue
     });
     if (this.board !== null) {
       this.boardService.save(this.board).subscribe();
@@ -44,7 +45,7 @@ export class BoardComponent implements OnInit {
                 for (let item of list.issues) {
                   if (issue.id === item.id) {
                     return false;
-                  } 
+                  }
                 }
               }
               return true;
@@ -67,13 +68,14 @@ export class BoardComponent implements OnInit {
   addList() {
     console.log('click');
     this.board?.lists.push({
-      id: -1,
       title: this.newList,
       issues: []
     });
     this.newList = '';
     if (this.board !== null) {
-      this.boardService.save(this.board).subscribe();
+      this.boardService.save(this.board).subscribe(data => {
+        this.board = data;
+      });
     }
   }
 

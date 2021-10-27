@@ -70,7 +70,7 @@ export class ListUsersDataSource extends DataSource<User> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'name': return compare(a.name, b.name, isAsc);
+        case 'name': return compare(a.username, b.username, isAsc);
         case 'id': return compare(a.id ? a.id : 0, b.id ? b.id : 0, isAsc);
         default: return 0;
       }

@@ -9,8 +9,7 @@ export class UserService {
 
   private emptyUser: User = {
     id: 0,
-    name: 'user',
-    username: '',
+    username: 'user',
     password: '',
     email: '',
     level: 'Reporter'
@@ -19,7 +18,7 @@ export class UserService {
   private loggedUser = new BehaviorSubject<User>(this.emptyUser);
 
   constructor(private http: HttpClient) {
-    
+
   }
 
   setLoggedUser(user?: User): void {
