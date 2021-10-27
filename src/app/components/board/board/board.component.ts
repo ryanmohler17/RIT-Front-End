@@ -1,12 +1,12 @@
-import {CdkDragDrop, transferArrayItem} from '@angular/cdk/drag-drop';
-import {Component, OnChanges, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Board} from 'src/app/interfaces/board';
-import {BoardList} from 'src/app/interfaces/board-list';
-import {BoardService} from 'src/app/service/board.service';
-import {Issue} from 'src/domain/issue/issue';
-import {IssueService} from 'src/domain/issue/issue.service';
-import {ListComponent} from '../list/list.component';
+import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Board } from 'src/app/interfaces/board';
+import { BoardList } from 'src/app/interfaces/board-list';
+import { BoardService } from 'src/app/service/board.service';
+import { Issue } from 'src/domain/issue/issue';
+import { IssueService } from 'src/domain/issue/issue.service';
+import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-board',
@@ -18,16 +18,21 @@ export class BoardComponent implements OnInit {
   issues: Issue[] = [];
   newList: string = '';
 
-  constructor(private boardService: BoardService, private activatedRoute: ActivatedRoute, private issueService: IssueService) {
-  }
+  constructor(private boardService: BoardService, private activatedRoute: ActivatedRoute, private issueService: IssueService) { }
 
   itemAdded(event: any) {
     this.issues = this.issues.filter(issue => {
       return issue.id !== event.issue
     });
-    if (this.board !== null) {
-      this.boardService.save(this.board).subscribe();
-    }
+    this.issueService.findById(event.issue).subscribe(issue => {
+      console.log("push")
+      this.board?.lists.filter(list => {
+        return list.id == event.list
+      })[0].issues.push(issue)
+      if (this.board !== null) {
+        this.boardService.save(this.board).subscribe();
+      }
+    });
   }
 
   ngOnInit(): void {
