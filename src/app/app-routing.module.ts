@@ -7,6 +7,7 @@ import { ReportComponent } from './components/report/report.component';
 import {ListUsersComponent} from "./components/users/list-users/list-users.component";
 import { HomeComponent } from './components/home/home.component';
 import { BoardComponent } from './components/board/board/board.component';
+import {LogoutComponent} from "./components/logout/logout.component";
 
 const routes: Routes = [
   { path: 'browse/:userId', component: IssuesComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'board/:boardId', component: BoardComponent},
   { path: 'users', component: ListUsersComponent },
   { path: 'report/:issueId', component: ReportComponent },
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
+  { path: 'logout', component: LogoutComponent }
 ];
 
 @NgModule({

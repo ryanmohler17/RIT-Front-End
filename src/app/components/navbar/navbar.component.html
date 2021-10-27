@@ -16,7 +16,7 @@
 
   <div style="width:1500px"></div>
   <div class="" *ngIf="account">
-    <button mat-raised-button color="primary" routerLink="/">Logout</button>
+    <button mat-raised-button color="primary" routerLink="/logout">Logout</button>
     <button mat-raised-button color="primary" routerLink="/">{{account.username}}</button>
   </div>
   <div *ngIf="!account">

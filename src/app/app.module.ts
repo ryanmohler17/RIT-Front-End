@@ -42,6 +42,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FormsModule } from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { CorsInterceptor } from 'src/domain/corsHttpIntercept';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CorsInterceptor } from 'src/domain/corsHttpIntercept';
     HomeComponent,
     BoardComponent,
     ListComponent,
-    ClickStopPropagationDirective
+    ClickStopPropagationDirective,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -35,6 +35,6 @@ export class MainComponent implements OnInit {
 
   loggout(): void {
     this.userService.setLoggedUser(undefined);
-    this.router.navigate(["/main/issues"]);
+    this.router.navigate(["/"]);
   }
 }
