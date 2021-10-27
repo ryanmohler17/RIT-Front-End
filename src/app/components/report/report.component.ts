@@ -99,6 +99,7 @@ export class ReportComponent implements OnInit {
 
   onSave(): void {
     this.issue = {...this.issue, ...this.reportForm.value};
+    console.log(this.issue);
     this.issue.assignedTo = this.users.find((user) => user.id == this.reportForm.get('assignedTo')?.value);
 
     const followUp: FollowUp = {...this.reportForm.value}
@@ -106,9 +107,10 @@ export class ReportComponent implements OnInit {
     this.issue.createdBy = this.user;
 
     this.issueService.save({issue: this.issue, followUp: followUp}).subscribe((data) => {
-      this.issue = data.issue;
-      this.loadFollowUps();
+      //this.issue = data.issue;
+      //this.loadFollowUps();
       this.snackBar.open("Issue saved successfully.", "Close", {duration: 10000});
+      this.router.navigate(["/"]);
     }, (error) => {
       console.log(error);
       this.snackBar.open("Error while saving issue.", "Close");

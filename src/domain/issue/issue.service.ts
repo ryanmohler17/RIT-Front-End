@@ -39,21 +39,22 @@ export class IssueService {
   private issues = new BehaviorSubject<Issue[]>(this.issuesTest);
 
   findAll(): Observable<Issue[]> {
-    //return this.http.get<Issue[]>(`${environment.apiURL}/issues`);
-    return this.issues.asObservable();
+    return this.http.get<Issue[]>(`${environment.apiURL}/issues/getAllIssues`);
+    //return this.issues.asObservable();
   }
 
   findById(issueId: number): Observable<Issue> {
-    //return this.http.get<Issue>(`${environment.apiURL}/issues/${issueId}`);
-    return new Observable(subscriber => {
+    return this.http.get<Issue>(`${environment.apiURL}/issues/${issueId}`);
+    /*return new Observable(subscriber => {
       subscriber.next(this.issuesTest.filter(issue => {
         return issue.id === issueId
       })[0])
-    })
+    })*/
   }
 
   save(issueFollowUpDTO: IssueFollowUpDTO): Observable<IssueFollowUpDTO> {
-    return this.http.post<IssueFollowUpDTO>(`${environment.apiURL}/issues`, issueFollowUpDTO);
+    console.log(issueFollowUpDTO.issue)
+    return this.http.post<IssueFollowUpDTO>(`${environment.apiURL}/issues/createIssue`, issueFollowUpDTO.issue);
   }
 
 /*  findByUser(userId: number): Observable<Issue[]> {

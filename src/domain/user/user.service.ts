@@ -31,11 +31,15 @@ export class UserService {
   }
 
   getLoggerUser(): Observable<User> {
-    return this.http.get<User>(`${environment.apiURL}/users/current`)
+    return this.http.get<User>(`${environment.apiURL}/users/current`, {
+      headers: {
+        id: `${sessionStorage.getItem("id")}`
+      }
+    })
   }
 
   findAll(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.apiURL}/users`);
+    return this.http.get<User[]>(`${environment.apiURL}/users/getAllUsers`);
   }
 
   findById(userId: number): Observable<User> {
@@ -43,14 +47,14 @@ export class UserService {
   }
 
   save(user: User): Observable<User> {
-    return this.http.post<User>(`${environment.apiURL}/users`, user);
+    return this.http.post<User>(`${environment.apiURL}/createUser`, user);
   }
 
   delete(userId: number): Observable<void> {
     return this.http.delete<void>(`${environment.apiURL}/users/${userId}`);
   }
 
-  login(value: any): Observable<User> {
-    return this.http.post<User>(`${environment.apiURL}/users/login`, value);
+  login(value: any): Observable<string> {
+    return this.http.post<string>(`${environment.apiURL}/users/login`, value);
   }
 }

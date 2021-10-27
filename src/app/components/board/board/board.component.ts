@@ -32,7 +32,7 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       const boardId: number = parseInt(this.activatedRoute.snapshot.paramMap.get('boardId') as string);
-      this.boardService.getBoard().subscribe(board => {
+      this.boardService.findById(boardId).subscribe(board => {
         this.board = board;
         this.issueService.findAll().subscribe(issues => {
           this.issues = issues.filter(issue => {

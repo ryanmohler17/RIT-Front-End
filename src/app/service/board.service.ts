@@ -11,7 +11,7 @@ export class BoardService {
 
   private emptyBoard: Board = {
     id: 0,
-    name: 'Test',
+    title: 'Test',
     description: 'This is a test board',
     creator: 0,
     lists: [
@@ -52,16 +52,11 @@ export class BoardService {
   }
 
 
-  private http: HttpClient
-  private board = new BehaviorSubject<Board>(this.emptyBoard);
-
-  setBoard(board?: Board): void {
-    if (!board) {
-      this.board.next(this.emptyBoard);
-    } else {
-      this.board.next(board);
-    }
+  constructor(private http: HttpClient) {
+    
   }
+
+  private board = new BehaviorSubject<Board>(this.emptyBoard);
 
   getBoard(): Observable<Board> {
     return this.board.asObservable()
@@ -69,18 +64,18 @@ export class BoardService {
 
 
   findAll(): Observable<Board[]> {
-    return this.http.get<Board[]>(`${environment.apiURL}/api/boards`);
+    return this.http.get<Board[]>(`${environment.apiURL}/board/getAllBoards`);
   }
 
   findById(boardId: number): Observable<Board> {
-    return this.http.get<Board>(`${environment.apiURL}/api/boards/${boardId}`);
+    return this.http.get<Board>(`${environment.apiURL}/board/getBoardById/${boardId}`);
   }
 
   save(board: Board): Observable<Board> {
-    return this.http.post<Board>(`${environment.apiURL}/api/boards`, board);
+    return this.http.post<Board>(`${environment.apiURL}/board/updateBoard/${board.id}`, board);
   }
 
   delete(boardId: number): Observable<void> {
-    return this.http.delete<void>(`${environment.apiURL}/api/boards/${boardId}`);
+    return this.http.delete<void>(`${environment.apiURL}/board/${boardId}`);
   }
 }
