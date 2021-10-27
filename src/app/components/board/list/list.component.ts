@@ -45,6 +45,7 @@ export class ListComponent implements OnInit, OnChanges {
   }
 
   addIssue(id?: number) {
+    console.log(id);
     if (!id) {
       return;
     }

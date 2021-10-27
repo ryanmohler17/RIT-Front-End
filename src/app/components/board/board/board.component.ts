@@ -33,6 +33,9 @@ export class BoardComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       const boardId: number = parseInt(this.activatedRoute.snapshot.paramMap.get('boardId') as string);
       this.boardService.findById(boardId).subscribe(board => {
+        if (!board.lists) {
+          board.lists = [];
+        }
         this.board = board;
         this.issueService.findAll().subscribe(issues => {
           this.issues = issues.filter(issue => {
