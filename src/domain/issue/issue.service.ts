@@ -39,24 +39,25 @@ export class IssueService {
   private issues = new BehaviorSubject<Issue[]>(this.issuesTest);
 
   findAll(): Observable<Issue[]> {
-    //return this.http.get<Issue[]>(`${environment.apiURL}/api/issues`);
-    return this.issues.asObservable();
+    return this.http.get<Issue[]>(`${environment.apiURL}/issues/getAllIssues`);
+    //return this.issues.asObservable();
   }
 
   findById(issueId: number): Observable<Issue> {
-    //return this.http.get<Issue>(`${environment.apiURL}/api/issues/${issueId}`);
-    return new Observable(subscriber => {
+    return this.http.get<Issue>(`${environment.apiURL}/issues/getIssueById/${issueId}`);
+    /*return new Observable(subscriber => {
       subscriber.next(this.issuesTest.filter(issue => {
         return issue.id === issueId
       })[0])
-    })
+    })*/
   }
 
   save(issueFollowUpDTO: IssueFollowUpDTO): Observable<IssueFollowUpDTO> {
-    return this.http.post<IssueFollowUpDTO>(`${environment.apiURL}/api/issues`, issueFollowUpDTO);
+    console.log(issueFollowUpDTO.issue)
+    return this.http.post<IssueFollowUpDTO>(`${environment.apiURL}/issues/createIssue`, issueFollowUpDTO.issue);
   }
 
-  findByUser(userId: number): Observable<Issue[]> {
+/*  findByUser(userId: number): Observable<Issue[]> {
     return this.http.get<Issue[]>(`${environment.apiURL}/api/users/${userId}/issues`);
 
     // const issue: Issue = {
@@ -87,4 +88,5 @@ export class IssueService {
     // const data = [issue];
     // return new BehaviorSubject<Issue[]>(data).asObservable();
   }
+  */
 }

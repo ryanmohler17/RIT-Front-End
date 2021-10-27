@@ -23,7 +23,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {EditUserComponent} from './components/users/edit-user/edit-user.component';
 import {ReportComponent} from './components/report/report.component';
 import {UserService} from 'src/domain/user/user.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {IssueService} from "../domain/issue/issue.service";
 import {ListUsersComponent} from './components/users/list-users/list-users.component';
@@ -41,6 +41,8 @@ import { ClickStopPropagationDirective } from './directives/click-stop-propagati
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { FormsModule } from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { CorsInterceptor } from 'src/domain/corsHttpIntercept';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     HomeComponent,
     BoardComponent,
     ListComponent,
-    ClickStopPropagationDirective
+    ClickStopPropagationDirective,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +91,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
   providers: [
     UserService,
     IssueService,
+    { provide: HTTP_INTERCEPTORS, useClass: CorsInterceptor, multi: true },
     FollowUpService
   ],
   bootstrap: [AppComponent]

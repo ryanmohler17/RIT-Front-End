@@ -12,6 +12,6 @@ export class FollowUpService {
   }
 
   findByIssueId(issueId: number): Observable<FollowUp[]> {
-    return this.http.get<FollowUp[]>(`${environment.apiURL}/api/issues/${issueId}/follow-ups`);
+    return this.http.get<FollowUp[]>(`${environment.apiURL}/status/changeStatus`);
   }
 }

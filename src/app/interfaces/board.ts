@@ -2,7 +2,7 @@ import { BoardList } from "./board-list";
 
 export interface Board {
     id: number,
-    name: string,
+    title: string,
     description: string,
     creator: number,
     lists: BoardList[]

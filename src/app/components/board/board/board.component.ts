@@ -20,19 +20,28 @@ export class BoardComponent implements OnInit {
 
   constructor(private boardService: BoardService, private activatedRoute: ActivatedRoute, private issueService: IssueService) { }
 
-  itemAdded(event: number) {
+  itemAdded(event: any) {
     this.issues = this.issues.filter(issue => {
-      return issue.id !== event
+      return issue.id !== event.issue
     });
-    if (this.board !== null) {
-      this.boardService.save(this.board).subscribe();
-    }
+    this.issueService.findById(event.issue).subscribe(issue => {
+      console.log("push")
+      this.board?.lists.filter(list => {
+        return list.id == event.list
+      })[0].issues.push(issue)
+      if (this.board !== null) {
+        this.boardService.save(this.board).subscribe();
+      }
+    });
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       const boardId: number = parseInt(this.activatedRoute.snapshot.paramMap.get('boardId') as string);
-      this.boardService.getBoard().subscribe(board => {
+      this.boardService.findById(boardId).subscribe(board => {
+        if (!board.lists) {
+          board.lists = [];
+        }
         this.board = board;
         this.issueService.findAll().subscribe(issues => {
           this.issues = issues.filter(issue => {
@@ -41,7 +50,7 @@ export class BoardComponent implements OnInit {
                 for (let item of list.issues) {
                   if (issue.id === item.id) {
                     return false;
-                  } 
+                  }
                 }
               }
               return true;
@@ -64,13 +73,14 @@ export class BoardComponent implements OnInit {
   addList() {
     console.log('click');
     this.board?.lists.push({
-      id: -1,
       title: this.newList,
       issues: []
     });
     this.newList = '';
     if (this.board !== null) {
-      this.boardService.save(this.board).subscribe();
+      this.boardService.save(this.board).subscribe(data => {
+        this.board = data;
+      });
     }
   }
 

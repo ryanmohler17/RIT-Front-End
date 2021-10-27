@@ -12,7 +12,7 @@ export class ListComponent implements OnInit, OnChanges {
 
   @Input() list: BoardList;
   @Input() items: Issue[];
-  @Output() addItemEvent = new EventEmitter<number>();
+  @Output() addItemEvent = new EventEmitter<any>();
   itemsFiltered: Issue[] = [];
   searchText: string = '';
 
@@ -45,13 +45,17 @@ export class ListComponent implements OnInit, OnChanges {
   }
 
   addIssue(id?: number) {
+    console.log(id);
     if (!id) {
       return;
     }
     this.issueService.findById(id).subscribe(issue => {
       this.list.issues.push(issue);
     });
-    this.addItemEvent.emit(id);
+    this.addItemEvent.emit({
+      issue: id,
+      list: this.list.id
+    });
   }
 
 }

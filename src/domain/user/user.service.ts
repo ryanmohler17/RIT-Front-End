@@ -9,8 +9,7 @@ export class UserService {
 
   private emptyUser: User = {
     id: 0,
-    name: 'user',
-    username: '',
+    username: 'user',
     password: '',
     email: '',
     level: 'Reporter'
@@ -31,26 +30,30 @@ export class UserService {
   }
 
   getLoggerUser(): Observable<User> {
-    return this.loggedUser.asObservable();
+    return this.http.get<User>(`${environment.apiURL}/users/current`, {
+      headers: {
+        id: `${sessionStorage.getItem("id")}`
+      }
+    })
   }
 
   findAll(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.apiURL}/api/users`);
+    return this.http.get<User[]>(`${environment.apiURL}/users/getAllUsers`);
   }
 
   findById(userId: number): Observable<User> {
-    return this.http.get<User>(`${environment.apiURL}/api/users/${userId}`);
+    return this.http.get<User>(`${environment.apiURL}/users/${userId}`);
   }
 
   save(user: User): Observable<User> {
-    return this.http.post<User>(`${environment.apiURL}/api/users`, user);
+    return this.http.post<User>(`${environment.apiURL}/createUser`, user);
   }
 
   delete(userId: number): Observable<void> {
-    return this.http.delete<void>(`${environment.apiURL}/api/users/${userId}`);
+    return this.http.delete<void>(`${environment.apiURL}/users/${userId}`);
   }
 
-  login(value: any): Observable<User> {
-    return this.http.post<User>(`${environment.apiURL}/api/users/login`, value);
+  login(value: any): Observable<string> {
+    return this.http.post<string>(`${environment.apiURL}/users/login`, value);
   }
 }
