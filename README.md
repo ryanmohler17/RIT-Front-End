@@ -1,27 +1,73 @@
-# Rit
+# RITS - Front End
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.8.
+This is the front end for the RITS project. For the back end you can go here.
 
-## Development server
+[https://github.com/ryanmohler17/RIT-Backend](https://github.com/ryanmohler17/RIT-Backend)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Project Description
 
-## Code scaffolding
+RITS (Revasture Issue Tracking Software) is an enterprise level tracking tool designed track and manage software/product issues during the different stages of development. The application will allow a reporter (end user or developer) to submit description of issue/bug to be resolved. The System will assign a schedule for follow ups and resolution, and will allow periodic updates on status of case, which will be available to the reporter.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Technologies Used
 
-## Build
+* Jenkins
+* Linux
+* SendGrid
+* Java 8
+* Angular
+* Spring
+* Hibernate
+* HTML
+* CSS
+* JavaScript
+* TypeScript
+* Docker
+* PostgreSql
+* JUnit
+* Lombok
+* Log4j
+* Maven
+* Jackson
+* Mockito
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Features
+### Implemented
+* Ability to report issues
+* Ability to edit a SCRUM board
+* Ability to log in
 
-## Running unit tests
+### TODO
+* Fix dounble adding of issues onto a scrum board
+* Implement an issue view page
+    * Ability to follow up on issues
+    * Comment System on issues
+* Allow creation of SCRUM Boards
+* Email
+* Registration
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Getting Started
 
-## Running end-to-end tests
+Before getting started with the front end make sure you have a back end up and running. [See the readme file in the backend for instructions on how to set that project up.](https://github.com/ryanmohler17/RIT-Backend)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Also make sure you have the angular cli installed.
 
-## Further help
+To get started with the front end, simply clone the code
+```
+git clone https://github.com/ryanmohler17/RIT-Front-End.git
+```
+Enter the directory you just cloned, and run
+```
+ng serve
+```
+The site should now be accesiable at [http://localhost:4200/](http://localhost:4200/)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Contributors
+
+> Ryan Mohler
+
+> Jordan Perez
+
+> Jorge Ferreira
+
+> Alberto
